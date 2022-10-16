@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<title>[[${quizGame.name}]] - Fun with Flags</title>
+</head>
+<body class="d-flex flex-column min-vh-100">
+ 	<header th:replace="layouts/header_user.html :: header-user"></header>
+ 	<nav th:replace="layouts/menu_user.html :: menu-user"></nav>
+	<main class="container">
+		<br>
+		<h1 class="text-center" style="padding:5%;" th:text="${quizGame.name}"></h1>
+		<img class="d-block mx-auto" th:src="${quizGame.flag.image}" alt="${quizGame.flag.name}" width="50%" height="50%">
+		<h2 class="text-center" style="padding:5%;">Game code
+			<br>
+			<span th:text="${quizGame.code}"></span>
+		</h2>
+		<h2 class="text-center" style="padding:2%;">Quiz's Questions</h2>
+		<div class="container bg-light" style="padding-top:2%;" th:each="quizquestion, iStat : ${listQuizQuestions}">
+			<p class="text-center font-weight-bold">Question #<span th:text="${iStat.index} + 1"></span></p>
+			<p class="text-center" th:text="${quizquestion.question}"></p>
+			<p class="text-center font-weight-bold text-danger">Answer A</p>
+			<p class="text-center" th:text="${quizquestion.answerA}"></p>
+			<p class="text-center font-weight-bold text-primary">Answer B</p>
+			<p class="text-center " th:text="${quizquestion.answerB}"></p>
+			<p class="text-center font-weight-bold text-success">Answer C</p>
+			<p class="text-center" th:text="${quizquestion.answerC}"></p>
+			<p class="text-center font-weight-bold text-warning">Answer D</p>
+			<p class="text-center" th:text="${quizquestion.answerD}"></p>
+			<br>
+			<p class="text-center font-weight-bold text-success">Correct answer</p>
+			<p class="text-center text-success" style="padding-bottom:2%;" th:text="${quizquestion.answerCorrect}"></p>
+		</div>
+		<br>
+ 	</main>
+	<footer th:replace="layouts/footer_user.html :: footer-user"></footer>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

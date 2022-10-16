@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<title>Fun with Flags - A web application to learn and have fun about flags</title>
+	<style th:inline="text">
+		#intro { 
+			background: url([[@{/img/background-index.png}]])
+                		no-repeat center fixed;
+		}
+	</style>
+</head>
+<body class="d-flex flex-column min-vh-100">
+ 	<header th:replace="layouts/header.html :: header"></header>
+ 	<nav th:replace="layouts/menu.html :: menu"></nav>
+	<main class="container-fluid">
+		<div class="row" id="intro">
+			<h1 class="display-4 text-center text-light" style="padding:10%;">Have fun with this educational application to learn about the flags of the world</h1>
+		</div>
+		<div class="row bg-dark" style="padding:5%;">
+			<div class="col-md">
+				<p class="h3 text-center text-white">Join a Quiz Game</p>
+				<br>
+				<button type="button" th:onclick="window.location.href='/join/quizgame'" value="Join a Quiz Game" class="btn btn-primary mx-auto d-block" style="padding:2%;">Join a Quiz Game</button>
+				<br>
+			</div>
+			<div class="col-md">
+				<p class="h3 text-center text-white">Join a T/F Game</p>
+				<br>
+				<button type="button" th:onclick="window.location.href='/join/tfgame'" value="Join a T/F Game" class="btn btn-primary mx-auto d-block" style="padding:2%;">Join a T/F Game</button>
+				<br>
+			</div>
+		</div>
+		<div class="row bg-light" style="padding:5%;">
+			<div class="col-md-4">
+				<img class="img-responsive mx-auto d-block" th:src="@{/img/see-flags.png}" alt="See flags and study" width="100%" height="100%">
+			</div>
+			<div class="col-md-8">
+				<p class="h2 text-center">Study all the flags of the world from the portal. You don't need to register to learn.</p>
+			</div>
+		</div>
+		<div class="row bg-light" style="padding:5%;">
+			<div class="col-md-8">
+				<p class="h2 text-center">If you register, you can create various mini-games with your friends.</p>
+			</div>
+			<div class="col-md-4">
+				<img class="img-responsive mx-auto d-block" th:src="@{/img/background-4-answers.png}" alt="Minigame Four Responses" width="100%" height="100%">
+			</div>
+		</div>
+		<div class="row bg-light" style="padding:5%;">
+			<div class="col-md-4">
+				<img class="img-responsive mx-auto d-block" th:src="@{/img/background-true-false.png}" alt="Minigame True False" width="100%" height="100%">
+			</div>
+			<div class="col-md-8">
+				<p class="h2 text-center">There are two types of mini-games, 4-answer test and true/false.</p>
+			</div>
+		</div>
+		<div class="row bg-light" style="padding:5%;">
+			<div class="col-md-8">
+				<p class="h2 text-center">Join a game by entering the game code to access. You do not need registration.</p>
+				<br>
+				<button type="button" th:onclick="window.location.href='/join/quizgame'" value="Join a Quiz Game" class="btn btn-primary mx-auto d-block" style="padding:2%;"><span class="h4">Join a Quiz Game</span></button>
+				<br>
+				<button type="button" th:onclick="window.location.href='/join/tfgame'" value="Join a T/F Game" class="btn btn-primary mx-auto d-block" style="padding:2%;"><span class="h4">Join a T/F Game</span></button>
+				<br>
+			</div>
+			<div class="col-md-4">
+				<img class="img-responsive mx-auto d-block" th:src="@{/img/background-join-game.png}" alt="Join game" width="100%" height="100%">
+			</div>
+		</div>
+		<div style="padding:5%;">
+			<p class="h2 text-center" style="padding:2%;">What are you waiting for to find out who is the smartest about flags? Sign up for free here.</p>
+			<button type="button" th:onclick="window.location.href='/signup'" value="Sign Up" class="btn btn-primary btn-block" style="padding:2%;"><span class="h4">Sign Up</span></button>
+		</div>
+	</main>
+	<footer th:replace="layouts/footer.html :: footer"></footer>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

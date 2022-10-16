@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+	<!-- Menu navegation Home's User -->
+	<nav th:fragment="menu-user" class="navbar navbar-expand-md bg-dark navbar-dark sticky-top">
+  		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+   			<span class="navbar-toggler-icon"></span>
+  		</button>
+  		<div class="collapse navbar-collapse" id="collapsibleNavbar">
+    		<ul class="navbar-nav">
+    			<li class="nav-item">
+    				<a class="nav-link text-white" th:href="@{/home}">Home</a>
+    			</li>
+    			<li class="nav-item dropdown">
+    				<a class="nav-link dropdown-toggle text-white" href="#" id="navbardrop" data-toggle="dropdown">Flags</a>
+    				<div class="dropdown-menu">
+        				<a class="dropdown-item" th:href="@{/home/add_flag}">New flag</a>
+        				<a class="dropdown-item" th:href="@{/home/view_flags}">My flags</a>
+        				<a class="dropdown-item" th:href="@{/home/edit_flags}">Edit flags</a>
+        				<a class="dropdown-item" th:href="@{/home/delete_flags}">Delete flags</a>
+      				</div>
+    			</li>
+    			<li class="nav-item dropdown">
+    				<a class="nav-link dropdown-toggle text-white" href="#" id="navbardrop" data-toggle="dropdown">Quiz games</a>
+    				<div class="dropdown-menu">
+        				<a class="dropdown-item" th:href="@{/home/add_quizgame}">New Quiz game</a>
+        				<a class="dropdown-item" th:href="@{/home/view_quizgames}">My Quiz games</a>
+        				<a class="dropdown-item" th:href="@{/home/edit_quizgames}">Edit Quiz games</a>
+        				<a class="dropdown-item" th:href="@{/home/delete_quizgames}">Delete Quiz games</a>
+      				</div>
+    			</li>
+    			<li class="nav-item dropdown">
+    				<a class="nav-link dropdown-toggle text-white" href="#" id="navbardrop" data-toggle="dropdown">T/F games</a>
+    				<div class="dropdown-menu">
+        				<a class="dropdown-item" th:href="@{/home/add_tfgame}">New T/F game</a>
+        				<a class="dropdown-item" th:href="@{/home/view_tfgames}">My T/F games</a>
+        				<a class="dropdown-item" th:href="@{/home/edit_tfgames}">Edit T/F games</a>
+        				<a class="dropdown-item" th:href="@{/home/delete_tfgames}">Delete T/F games</a>
+      				</div>
+    			</li>
+  			</ul>
+  		</div>
+  		<div>
+  			<ul class="navbar-nav">
+  				<li class="nav-item dropdown">
+    				<a class="nav-link dropdown-toggle text-white" href="#" id="navbardrop" data-toggle="dropdown" th:text="${username}"></a>
+    				<div class="dropdown-menu">
+        				<a class="dropdown-item" th:href="@{/logout}">Log Out</a>
+      				</div>
+    			</li>
+    		</ul>
+  		</div>  
+	</nav>
+</body>
+</html>

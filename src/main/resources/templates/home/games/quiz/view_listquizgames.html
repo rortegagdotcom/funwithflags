@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<title>My quiz games - Fun with Flags</title>
+</head>
+<body class="d-flex flex-column min-vh-100">
+  	<header th:replace="layouts/header_user.html :: header-user"></header>
+ 	<nav th:replace="layouts/menu_user.html :: menu-user"></nav>
+	<main class="container">
+		<br>
+		<h1 class="text-center" style="padding:5%;">My quiz games</h1>
+		<div class="container" th:if="${listQuizGamesUser.empty}">
+			<h3 class="text-center text-danger" style="padding:2%;">
+				It looks like you don't have any quiz, create one!
+			</h3>
+			<br>
+			<button type="button" th:onclick="window.location.href='/home/add_quizgame'" value="Create Quiz game" class="btn btn-primary mx-auto d-block" style="padding:2%;">Create Quiz game</button>
+		</div>
+		<div class="card-columns">
+			<div class="card bg-light" th:each="quizgame : ${listQuizGamesUser}">
+				<div class="card-header"><p class="text-center" th:text="${quizgame.name}"></p></div>
+				<div class="card-body">
+					<a class="btn btn-primary d-block" th:href="@{/home/view/quizgame/}+${quizgame.id}">See quiz game</a>
+				</div>
+			</div>
+		</div>
+		<br>
+ 	</main>
+	<footer th:replace="layouts/footer_user.html :: footer-user"></footer>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

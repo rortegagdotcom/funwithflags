@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<title>Home's [[${username}]] - Fun with Flags</title>
+</head>
+<body class="d-flex flex-column min-vh-100">
+ 	<header th:replace="layouts/header_user.html :: header-user"></header>
+ 	<nav th:replace="layouts/menu_user.html :: menu-user"></nav>
+	<main class="container">
+		<br>
+		<h1 class="text-center" style="padding:5%;">Hello <span th:text="${username}"></span>, what are you going to do?</h1>
+		<div>
+        	<div class="alert alert-success text-center" role="alert" th:if="${msg}" th:utext="${msg}"></div>
+        </div>
+		<h2 class="text-center" style="padding:5%;">Flags</h2>
+		<div class="card-deck">
+			<div class="card text-center">
+    			<img class="card-img-top bck-flags" th:src="@{/img/add-flags.png}" alt="New flag">
+    			<div class="card-body">
+      				<h4 class="card-title">New flag</h4>
+      				<p class="card-text">Create your own flag</p>
+      				<a th:href="@{/home/add_flag}" class="btn btn-primary stretched-link">New flag</a>
+    			</div>
+  			</div>
+  			<div class="card text-center">
+    			<img class="card-img-top bck-flags" th:src="@{/img/view-flags.png}" alt="View flag">
+    			<div class="card-body">
+      				<h4 class="card-title">View flags</h4>
+      				<p class="card-text">View your own flags</p>
+      				<a th:href="@{/home/view_flags}" class="btn btn-primary stretched-link">View flags</a>
+    			</div>
+  			</div>
+  			<div class="card text-center">
+    			<img class="card-img-top bck-flags" th:src="@{/img/edit-flags.png}" alt="Edit flag">
+    			<div class="card-body">
+      				<h4 class="card-title">Edit flags</h4>
+      				<p class="card-text">Edit your own flags</p>
+      				<a th:href="@{/home/edit_flags}" class="btn btn-primary stretched-link">Edit flags</a>
+    			</div>
+  			</div>
+  			<div class="card text-center">
+    			<img class="card-img-top bck-flags" th:src="@{/img/delete-flags.png}" alt="Delete flag">
+    			<div class="card-body">
+      				<h4 class="card-title">Delete flags</h4>
+      				<p class="card-text">Delete your own flags</p>
+      				<a th:href="@{/home/delete_flags}" class="btn btn-primary stretched-link">Delete flags</a>
+    			</div>
+  			</div>
+		</div>
+		<h2 class="text-center" style="padding:5%;">Games</h2>
+		<h3 class="text-center" style="padding:2%;">Quiz Games</h3>
+		<div class="card-deck">
+			<div class="card text-center">
+    			<img class="card-img-top" th:src="@{/img/add-quiz-game.png}" alt="New Quiz game">
+    			<div class="card-body">
+      				<h4 class="card-title">New Quiz game</h4>
+      				<p class="card-text">Create a Quiz game</p>
+      				<a th:href="@{/home/add_quizgame}" class="btn btn-primary stretched-link">New Quiz game</a>
+    			</div>
+  			</div>
+  			<div class="card text-center">
+    			<img class="card-img-top" th:src="@{/img/view-quiz-games.png}" alt="View Quiz games">
+    			<div class="card-body">
+      				<h4 class="card-title">View Quiz games</h4>
+      				<p class="card-text">View your Quiz games</p>
+      				<a th:href="@{/home/view_quizgames}" class="btn btn-primary stretched-link">View Quiz games</a>
+    			</div>
+  			</div>
+  			<div class="card text-center">
+    			<img class="card-img-top" th:src="@{/img/edit-quiz-games.png}" alt="Edit Quiz games">
+    			<div class="card-body">
+      				<h4 class="card-title">Edit Quiz games</h4>
+      				<p class="card-text">Edit your own Quiz games</p>
+      				<a th:href="@{/home/edit_quizgames}" class="btn btn-primary stretched-link">Edit Quiz games</a>
+    			</div>
+  			</div>
+  			<div class="card text-center">
+    			<img class="card-img-top" th:src="@{/img/delete-quiz-games.png}" alt="Delete Quiz games">
+    			<div class="card-body">
+      				<h4 class="card-title">Delete Quiz games</h4>
+      				<p class="card-text">Delete your own Quiz games</p>
+      				<a th:href="@{/home/delete_quizgames}" class="btn btn-primary stretched-link">Delete Quiz games</a>
+    			</div>
+  			</div>
+		</div>
+		<h3 class="text-center" style="padding:2%;">T/F Games</h3>
+		<div class="card-deck">
+			<div class="card text-center">
+    			<img class="card-img-top" th:src="@{/img/add-tf-game.png}" alt="New T/F game">
+    			<div class="card-body">
+      				<h4 class="card-title">New T/F game</h4>
+      				<p class="card-text">Create a T/F game</p>
+      				<a th:href="@{/home/add_tfgame}" class="btn btn-primary stretched-link">New T/F game</a>
+    			</div>
+  			</div>
+  			<div class="card text-center">
+    			<img class="card-img-top" th:src="@{/img/view-tf-games.png}" alt="View T/F games">
+    			<div class="card-body">
+      				<h4 class="card-title">View T/F games</h4>
+      				<p class="card-text">View your T/F games</p>
+      				<a th:href="@{/home/view_tfgames}" class="btn btn-primary stretched-link">View T/F games</a>
+    			</div>
+  			</div>
+  			<div class="card text-center">
+    			<img class="card-img-top" th:src="@{/img/edit-tf-games.png}" alt="Edit T/F games">
+    			<div class="card-body">
+      				<h4 class="card-title">Edit T/F games</h4>
+      				<p class="card-text">Edit your own T/F games</p>
+      				<a th:href="@{/home/edit_tfgames}" class="btn btn-primary stretched-link">Edit T/F games</a>
+    			</div>
+  			</div>
+  			<div class="card text-center">
+    			<img class="card-img-top" th:src="@{/img/delete-tf-games.png}" alt="Delete T/F games">
+    			<div class="card-body">
+      				<h4 class="card-title">Delete T/F games</h4>
+      				<p class="card-text">Delete your own T/F games</p>
+      				<a th:href="@{/home/delete_tfgames}" class="btn btn-primary stretched-link">Delete T/F games</a>
+    			</div>
+  			</div>
+		</div>
+		<br>
+ 	</main>
+	<footer th:replace="layouts/footer_user.html :: footer-user"></footer>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

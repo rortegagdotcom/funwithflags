@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<title>Add Quiz game - Fun with Flags</title>
+</head>
+<body class="d-flex flex-column min-vh-100">
+	<header th:replace="layouts/header_user.html :: header-user"></header>
+ 	<nav th:replace="layouts/menu_user.html :: menu-user"></nav>
+	<main class="container">
+		<br>
+		<h1 class="text-center" style="padding:5%;">Add new Quiz game</h1>
+		<form th:action="@{/save_quizgame}" th:object="${quizgame}" id="quizgame" name="quizgame" method="post" enctype="multipart/form-data">
+            <label for="name" class="sr-only">Name of Quiz game</label>
+            <input type="text" th:field="*{name}" class="form-control" id="name" name="name" placeholder="Name of Quiz game" required autofocus>
+            <br>
+            <label for="flag">Select flag</label>
+            <select class="form-control" th:field="*{flag}" id="flag" name="flag" required autofocus>
+      			<option th:each="flag : ${listFlags}" th:value="${flag.id}" th:text="${flag.name}"></option>
+      		</select>
+      		<br>
+            <div id="accordion">
+            	<div class="card">
+    				<div class="card-header">
+      					<a class="card-link" data-toggle="collapse" href="#q1">Question #1</a>
+    				</div>
+    				<div id="q1" class="collapse show" data-parent="#accordion">
+      					<div class="card-body">
+      						<label for="question1" class="sr-only">What is the question?</label>
+        					<input type="text" class="form-control" th:field="${question.question}" id="question1" name="question" placeholder="What is the question?" required autofocus>
+        					<br>
+        					<label for="answerA1">Answer A</label>
+        					<input type="text" class="form-control" th:field="${question.answerA}" id="answerA1" name="answerA" placeholder="Answer A" required autofocus>
+        					<br>
+        					<label for="answerB1">Answer B</label>
+        					<input type="text" class="form-control" th:field="${question.answerB}" id="answerB1" name="answerB" placeholder="Answer B" required autofocus>
+        					<br>
+        					<label for="answerC1">Answer C</label>
+        					<input type="text" class="form-control" th:field="${question.answerC}" id="answerC1" name="answerC" placeholder="Answer C" required autofocus>
+        					<br>
+        					<label for="answerD1">Answer D</label>
+        					<input type="text" class="form-control" th:field="${question.answerD}" id="answerD1" name="answerD" placeholder="Answer D" required autofocus>
+        					<br>
+        					<label for="answercorrect1">Select the correct answer</label>
+        					<select class="form-control" th:field="${question.answerCorrect}" id="answercorrect1" name="answercorrect" required autofocus>
+        						<option value="A">A</option>
+        						<option value="B">B</option>
+        						<option value="C">C</option>
+        						<option value="D">D</option>
+        					</select>
+      					</div>
+    				</div>
+  				</div>
+  				<br>
+  				<div class="card">
+    				<div class="card-header">
+      					<a class="card-link" data-toggle="collapse" href="#q2">Question #2</a>
+    				</div>
+    				<div id="q2" class="collapse show" data-parent="#accordion">
+      					<div class="card-body">
+      						<label for="question2" class="sr-only">What is the question?</label>
+        					<input type="text" class="form-control" th:field="${question.question}" id="question2" name="question" placeholder="What is the question?" required autofocus>
+        					<br>
+        					<label for="answerA2">Answer A</label>
+        					<input type="text" class="form-control" th:field="${question.answerA}" id="answerA2" name="answerA" placeholder="Answer A" required autofocus>
+        					<br>
+        					<label for="answerB2">Answer B</label>
+        					<input type="text" class="form-control" th:field="${question.answerB}" id="answerB2" name="answerB" placeholder="Answer B" required autofocus>
+        					<br>
+        					<label for="answerC2">Answer C</label>
+        					<input type="text" class="form-control" th:field="${question.answerC}" id="answerC2" name="answerC" placeholder="Answer C" required autofocus>
+        					<br>
+        					<label for="answerD2">Answer D</label>
+        					<input type="text" class="form-control" th:field="${question.answerD}" id="answerD2" name="answerD" placeholder="Answer D" required autofocus>
+        					<br>
+        					<label for="answercorrect2">Select the correct answer</label>
+        					<select class="form-control" th:field="${question.answerCorrect}" id="answercorrect2" name="answercorrect" required autofocus>
+        						<option value="A">A</option>
+        						<option value="B">B</option>
+        						<option value="C">C</option>
+        						<option value="D">D</option>
+        					</select>
+      					</div>
+    				</div>
+  				</div>
+  				<br>
+  				<div class="card">
+    				<div class="card-header">
+      					<a class="card-link" data-toggle="collapse" href="#q3">Question #3</a>
+    				</div>
+    				<div id="q3" class="collapse show" data-parent="#accordion">
+      					<div class="card-body">
+      						<label for="question3" class="sr-only">What is the question?</label>
+        					<input type="text" class="form-control" th:field="${question.question}" id="question3" name="question" placeholder="What is the question?" required autofocus>
+        					<br>
+        					<label for="answerA3">Answer A</label>
+        					<input type="text" class="form-control" th:field="${question.answerA}" id="answerA3" name="answerA" placeholder="Answer A" required autofocus>
+        					<br>
+        					<label for="answerB3">Answer B</label>
+        					<input type="text" class="form-control" th:field="${question.answerB}" id="answerB3" name="answerB" placeholder="Answer B" required autofocus>
+        					<br>
+        					<label for="answerC3">Answer C</label>
+        					<input type="text" class="form-control" th:field="${question.answerC}" id="answerC3" name="answerC" placeholder="Answer C" required autofocus>
+        					<br>
+        					<label for="answerD3">Answer D</label>
+        					<input type="text" class="form-control" th:field="${question.answerD}" id="answerD3" name="answerD" placeholder="Answer D" required autofocus>
+        					<br>
+        					<label for="answercorrect3">Select the correct answer</label>
+        					<select class="form-control" th:field="${question.answerCorrect}" id="answercorrect3" name="answercorrect" required autofocus>
+        						<option value="A">A</option>
+        						<option value="B">B</option>
+        						<option value="C">C</option>
+        						<option value="D">D</option>
+        					</select>
+      					</div>
+    				</div>
+  				</div>
+  				<br>
+  				<div class="card">
+    				<div class="card-header">
+      					<a class="card-link" data-toggle="collapse" href="#q4">Question #4</a>
+    				</div>
+    				<div id="q4" class="collapse show" data-parent="#accordion">
+      					<div class="card-body">
+      						<label for="question4" class="sr-only">What is the question?</label>
+        					<input type="text" class="form-control" th:field="${question.question}" id="question4" name="question" placeholder="What is the question?" required autofocus>
+        					<br>
+        					<label for="answerA4">Answer A</label>
+        					<input type="text" class="form-control" th:field="${question.answerA}" id="answerA4" name="answerA" placeholder="Answer A" required autofocus>
+        					<br>
+        					<label for="answerB4">Answer B</label>
+        					<input type="text" class="form-control" th:field="${question.answerB}" id="answerB4" name="answerB" placeholder="Answer B" required autofocus>
+        					<br>
+        					<label for="answerC4">Answer C</label>
+        					<input type="text" class="form-control" th:field="${question.answerC}" id="answerC4" name="answerC" placeholder="Answer C" required autofocus>
+        					<br>
+        					<label for="answerD4">Answer D</label>
+        					<input type="text" class="form-control" th:field="${question.answerD}" id="answerD4" name="answerD" placeholder="Answer D" required autofocus>
+        					<br>
+        					<label for="answercorrect4">Select the correct answer</label>
+        					<select class="form-control" th:field="${question.answerCorrect}" id="answercorrect4" name="answercorrect" required autofocus>
+        						<option value="A">A</option>
+        						<option value="B">B</option>
+        						<option value="C">C</option>
+        						<option value="D">D</option>
+        					</select>
+      					</div>
+    				</div>
+  				</div>
+  				<br>
+  				<div class="card">
+    				<div class="card-header">
+      					<a class="card-link" data-toggle="collapse" href="#q5">Question #5</a>
+    				</div>
+    				<div id="q5" class="collapse show" data-parent="#accordion">
+      					<div class="card-body">
+      						<label for="question5" class="sr-only">What is the question?</label>
+        					<input type="text" class="form-control" th:field="${question.question}" id="question5" name="question" placeholder="What is the question?" required autofocus>
+        					<br>
+        					<label for="answerA5">Answer A</label>
+        					<input type="text" class="form-control" th:field="${question.answerA}" id="answerA5" name="answerA" placeholder="Answer A" required autofocus>
+        					<br>
+        					<label for="answerB5">Answer B</label>
+        					<input type="text" class="form-control" th:field="${question.answerB}" id="answerB5" name="answerB" placeholder="Answer B" required autofocus>
+        					<br>
+        					<label for="answerC5">Answer C</label>
+        					<input type="text" class="form-control" th:field="${question.answerC}" id="answerC5" name="answerC" placeholder="Answer C" required autofocus>
+        					<br>
+        					<label for="answerD5">Answer D</label>
+        					<input type="text" class="form-control" th:field="${question.answerD}" id="answerD5" name="answerD" placeholder="Answer D" required autofocus>
+        					<br>
+        					<label for="answercorrect5">Select the correct answer</label>
+        					<select class="form-control" th:field="${question.answerCorrect}" id="answercorrect5" name="answercorrect" required autofocus>
+        						<option value="A">A</option>
+        						<option value="B">B</option>
+        						<option value="C">C</option>
+        						<option value="D">D</option>
+        					</select>
+      					</div>
+    				</div>
+  				</div>
+  			</div>
+			<br>
+            <input type="submit" class="btn btn-lg btn-success btn-block" value="Save quiz game">
+		</form>
+		<br>
+ 	</main>
+	<footer th:replace="layouts/footer_user.html :: footer-user"></footer>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

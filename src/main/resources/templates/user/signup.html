@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<title>Sign up - Fun with Flags</title>
+</head>
+<body class="d-flex flex-column min-vh-100">
+ 	<header th:replace="layouts/header.html :: header"></header>
+ 	<nav th:replace="layouts/menu.html :: menu"></nav>
+    <main class="container">
+    	<br>
+        <form class="form-horizontal" role="form" method="post" th:action="@{/signup}" th:object="${user}">
+            <div>
+            	<div class="alert alert-success text-center" role="alert" th:if="${msg}" th:utext="${msg}"></div>
+            </div>
+            <h2 class="text-center" style="padding:2%;">Register New User</h2>
+            <label for="name" class="sr-only">First Name</label>
+            <input type="text" th:field="*{firstName}" class="form-control" id="firstname" placeholder="First Name" required autofocus>
+            <br>
+            <label for="name" class="sr-only">Last Name</label>
+            <input type="text" th:field="*{lastName}" class="form-control" id="lastname" placeholder="Last Name" required autofocus>
+            <br>
+            <div class="form-control-feedback">
+            	<span class="text-danger align-middle" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
+            </div>
+            <label for="email" class="sr-only">Email</label>
+            <input type="text" th:field="*{email}" class="form-control" id="email" placeholder="username@email.com" required autofocus>
+            <br>
+            <label for="password" class="sr-only">Password</label>
+            <input type="password" th:field="*{password}" class="form-control" id="password" placeholder="Password" required>
+            <br>
+            <div class="form-control-feedback">
+            	<span class="text-danger align-middle" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></span>
+            </div>
+            <button type="submit" class="btn btn-lg btn-primary btn-block">Register</button>
+        </form>
+        <br>
+    </main>
+	<footer th:replace="layouts/footer.html :: footer"></footer>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

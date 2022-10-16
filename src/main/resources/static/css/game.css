@@ -1,0 +1,18 @@
+body {
+	background-color: #a10000;
+	animation-name: colorfun;
+	animation-duration: 20s;
+	animation-iteration-count: infinite;
+}
+		
+@keyframes colorfun {
+	0% {background-color: #a10000;}
+	25% {background-color: #a18e00;}
+	50% {background-color: #0069a1;}
+	75% {background-color: #03a100;}
+	100% {background-color: #a10000;}
+}
+		
+input {
+	text-align: center;
+}

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<title>Asia Flags - Fun with Flags</title>
+</head>
+<body class="d-flex flex-column min-vh-100">
+ 	<header th:replace="layouts/header.html :: header"></header>
+ 	<nav th:replace="layouts/menu.html :: menu"></nav>
+	<main class="container-fluid">
+		<h1 class="text-center" style="padding:5%;">Asia Flags</h1>
+		<div class="container" th:if="${listFlags.empty}">
+			<h3 class="text-center text-danger" style="padding:2%;">No flags found</h3>
+		</div>
+		<div class="card-columns">
+			<div class="card bg-light" th:each="flag : ${listFlags}">
+				<img class="card-img-top" th:src="${flag.image}" th:alt="${flag.name}">
+				<div class="card-body">
+					<h4 class="card-title text-center" th:text="${flag.name}"></h4>
+					<a class="btn btn-primary d-block" th:href="@{/view/flag/}+${flag.id}">See flag</a>
+				</div>
+			</div>
+		</div>
+	</main>
+	<footer th:replace="layouts/footer.html :: footer"></footer>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

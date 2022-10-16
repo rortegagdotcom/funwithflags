@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<title>Bad Request (400) - Fun with Flags</title>
+</head>
+<body>
+	<header th:replace="layouts/header.html :: header"></header>
+	<main class="container" style="padding:10%;">
+		<h1 class="text-center">Bad Request - 400</h1>
+		<p class="text-center">
+		It is likely that there is some type of unstable component that is not sufficiently protected, 
+		a faulty browser or a cache problem. Check with another browser and if not, contact the administrator 
+		or the developer.
+		</p>
+		<p class="text-center">Sorry for the inconvenience.</p>
+	</main>
+</body>
+</html>

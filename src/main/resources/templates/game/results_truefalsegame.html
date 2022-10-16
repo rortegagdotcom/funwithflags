@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<title>Results - Fun with Flags</title>
+</head>
+<body>
+	<header th:replace="layouts/header.html :: header"></header>
+	<main class="container-fluid">
+		<h1 class="text-center" style="padding:2%;">Results of the game</h1>
+		<br>
+		<h3 class="text-center" style="padding:2%;" th:text="${player}"></h3>
+		<h3 class="text-center">
+			Your score
+			<br>
+			<span th:text="${score}"></span>
+		</h3>
+		<br>
+		<h3 class="text-center">Questions of the game</h3>
+		<br>
+		<div class="container bg-light" style="padding-top:2%;" th:each="truefalsequestion, iStat : ${truefalsequestions}">
+			<h4 class="text-center" style="padding:1.5%;">Question <span th:text="${iStat.index+1}"></span></h4>
+			<p class="text-center font-weight-bold" th:text="${truefalsequestion.question}"></p>
+			<br>
+			<br>
+			<p class="text-center font-weight-bold btn-success" style="padding-top:1%;padding-bottom:1%;">
+				Correct answer
+				<br>
+				<span th:text="${truefalsequestion.answerCorrect}"></span>
+			</p>
+			<br>
+		</div>
+		<div class="container bg-dark" style="padding-top:2%;">
+			<h4 class="text-center text-white" style="padding:1.5%;">Your answers</h4>
+			<p class="text-center font-weight-bold text-white">
+				Question 1
+				<br>
+				<span th:text="${answer1}"></span>
+			</p>
+			<p class="text-center font-weight-bold text-white">
+				Question 2
+				<br>
+				<span th:text="${answer2}"></span>
+			</p>
+			<p class="text-center font-weight-bold text-white">
+				Question 3
+				<br>
+				<span th:text="${answer3}"></span>
+			</p>
+			<p class="text-center font-weight-bold text-white">
+				Question 4
+				<br>
+				<span th:text="${answer4}"></span>
+			</p>
+			<p class="text-center font-weight-bold text-white" style="padding-bottom:2%;">
+				Question 5
+				<br>
+				<span th:text="${answer5}"></span>
+			</p>
+		</div>
+		<button type="button" th:onclick="window.location.href='/'" value="Go Home" class="btn btn-primary btn-block" style="padding:2%;"><span class="h4">Go Home</span></button>
+		<br>
+	</main>
+	<footer th:replace="layouts/footer.html :: footer"></footer>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

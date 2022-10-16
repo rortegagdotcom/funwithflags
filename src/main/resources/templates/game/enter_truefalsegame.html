@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<title>Join T/F Game - Fun with Flags</title>
+	<link th:rel="stylesheet" th:href="@{/css/game.css}">
+</head>
+<body class="d-flex flex-column min-vh-100">
+ 	<header th:replace="layouts/header_game.html :: header-game"></header>
+	<main class="container-fluid">
+		<form th:action="@{/tfgame/}" method="post">
+			<h1 class="text-center text-white" style="padding:5%;">Enter the T/F Code</h1>
+			<label class="sr-only" for="player">Enter name player</label>
+			<input class="form-control" type="text" id="player" th:name="player" placeholder="Enter name player" required autofocus>
+			<br>
+			<label class="sr-only" for="codegame">Code Game</label>
+			<input class="form-control" type="text" id="codegame" th:name="codegame" maxlength="5" placeholder="Enter game code" onkeypress="return isNumber(event)" required autofocus>
+			<br>
+			<input class="form-control btn btn-light" type="submit" value="Enter game">
+		</form>
+	</main>
+	<footer th:replace="layouts/footer_game.html :: footer-game"></footer>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  	<script th:src="@{/js/is-number.js}"></script>
+</body>
+</html>

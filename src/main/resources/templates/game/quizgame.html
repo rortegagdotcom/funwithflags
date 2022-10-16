@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<title>Quiz Game - [[${quizgame.name}]] - Fun with Flags</title>
+</head>
+<body>
+	<header th:replace="layouts/header.html :: header"></header>
+	<main class="container-fluid">
+		<h3 class="text-center" th:text="${player}" style="padding:2%;"></h3>
+		<h1 class="text-center" style="padding:2%;">Quiz game - <span th:text="${quizgame.name}"></span></h1>
+		<img class="img-responsive mx-auto d-block" th:src="@{${quizgame.flag.image}}" th:alt="@{${quizgame.flag.name}}" width="50%" height="50%">
+		<br>
+		<form th:action="@{/results_quiz_game}" method="post">
+				<ul class="nav nav-tabs justify-content-center" role="tablist">
+    				<li class="nav-item" th:each="quizquestion, iStat : ${quizquestions}">
+      					<a class="nav-link" data-toggle="tab" th:classappend="${iStat.first} ? 'active'" th:href="@{|#q${iStat.index+1}|}">Question #<span th:text="${iStat.index+1}"></span></a>
+    				</li>
+  				</ul>
+  				<br>
+  				<div class="tab-content">
+    				<div th:id="q + ${iStat.index+1}" class="container tab-pane" th:classappend="${iStat.first} ? 'show active'" th:each="quizquestion, iStat : ${quizquestions}">
+    					<br>
+      					<h3 class="text-center" style="padding:2%;" th:text="${quizquestion.question}"></h3>
+      					<div class="btn btn-danger btn-block">
+      						<input type="radio" style="padding:2%;" th:id="answerA + ${iStat.index+1}" th:name="answer + ${iStat.index+1}" value="A" required><label th:for="answerA + ${iStat.index+1}">A) <span th:text="${quizquestion.answerA}"></span></label>
+      					</div>
+      					<div class="btn btn-primary btn-block">
+      						<input type="radio" style="padding:2%;" th:id="answerB + ${iStat.index+1}" th:name="answer + ${iStat.index+1}" value="B" required><label th:for="answerB + ${iStat.index+1}">B) <span th:text="${quizquestion.answerB}"></span></label>
+      					</div>
+      					<div class="btn btn-success btn-block">
+      						<input type="radio" style="padding:2%;" th:id="answerC + ${iStat.index+1}" th:name="answer + ${iStat.index+1}" value="C" required><label th:for="answerC + ${iStat.index+1}">C) <span th:text="${quizquestion.answerC}"></span></label>
+      					</div>
+      					<div class="btn btn-warning btn-block">
+      						<input type="radio" style="padding:2%;" th:id="answerD + ${iStat.index+1}" th:name="answer + ${iStat.index+1}" value="D" required><label th:for="answerD + ${iStat.index+1}">D) <span th:text="${quizquestion.answerD}"></span></label>
+    					</div>
+    				</div>
+    				<br>
+    				<input type="hidden" id="player" name="player" th:value="${player}">
+    				<input type="hidden" id="quizgame" name="quizgame" th:value="${quizgame.id}">
+  				</div>
+  			<input class="btn btn-primary btn-block" style="padding:2%;" type="submit" value="Submit my answers">
+  		</form>
+  		<br>
+	</main>
+	<footer th:replace="layouts/footer.html :: footer"></footer>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

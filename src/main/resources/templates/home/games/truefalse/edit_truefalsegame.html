@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<title>Edit [[${truefalseGame.name}]] - Fun with Flags</title>
+</head>
+<body class="d-flex flex-column min-vh-100">
+ 	<header th:replace="layouts/header_user.html :: header-user"></header>
+ 	<nav th:replace="layouts/menu_user.html :: menu-user"></nav>
+	<main class="container">
+		<br>
+		<h1 class="text-center" style="padding:5%;">Edit T/F game - [[${truefalseGame.name}]]</h1>
+		<form th:action="@{/save_edit_tfgame}" th:object="${truefalseGame}" id="truefalsegame" name="quizgame" method="post" enctype="multipart/form-data">
+            <input type="hidden" th:field="*{id}" class="form-control" id="id" name="id" required>
+            <label for="name" class="sr-only">Name of T/F game</label>
+            <input type="text" th:field="*{name}" class="form-control" id="name" name="name" placeholder="Name of T/F game" required autofocus>
+            <br>
+            <label for="flag">Select flag</label>
+            <select class="form-control" th:field="*{flag}" id="flag" name="flag" required autofocus>
+      			<option th:each="flag : ${listFlags}" th:value="${flag.id}" th:text="${flag.name}"></option>
+      		</select>
+      		<br>
+            <div id="accordion">
+            	<div class="card" th:each="truefalsequestion, iStat : ${listTrueFalseQuestions}">
+    				<div class="card-header">
+      					<a class="card-link" data-toggle="collapse" th:href="@{|#q${iStat.index+1}|}">Question #<span th:text="${iStat.index+1}"></span></a>
+    				</div>
+    				<div th:id="q + ${iStat.index+1}" class="collapse show" data-parent="#accordion">
+      					<div class="card-body">
+      						<label th:for="question + ${iStat.index+1}" class="sr-only">What is the question?</label>
+        					<input type="text" class="form-control" th:id="question + ${iStat.index+1}" name="question" placeholder="What is the question?" th:value="${truefalsequestion.question}" disabled>
+        					<br>
+        					<label th:for="answercorrect + ${iStat.index+1}">Select True or False</label>
+        					<select class="form-control" th:id="answercorrect + ${iStat.index+1}" name="answercorrect" disabled>
+        						<option value="True">True</option>
+        						<option value="False">False</option>
+        					</select>
+      					</div>
+    				</div>
+  				</div>
+  				<br>
+  			</div>
+			<br>
+            <input type="submit" class="btn btn-lg btn-success btn-block" value="Edit T/F game">
+		</form>
+		<br>
+ 	</main>
+	<footer th:replace="layouts/footer_user.html :: footer-user"></footer>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  	<script th:src="@{/js/preview-image.js}"></script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css">
+	<title>Add flag - Fun with Flags</title>
+</head>
+<body class="d-flex flex-column min-vh-100">
+	<header th:replace="layouts/header_user.html :: header-user"></header>
+ 	<nav th:replace="layouts/menu_user.html :: menu-user"></nav>
+	<main class="container">
+		<br>
+		<h1 class="text-center" style="padding:5%;">Add new flag</h1>
+		<form th:action="@{/save_flag}" th:object="${flag}" id="flag" name="flag" method="post" enctype="multipart/form-data">
+			<div class="bg-dark" style="padding:2%;">
+				<img class="d-block mx-auto" src="" id="preview" width="75%">
+			</div>
+			<br>
+            <label for="image" class="sr-only">Image</label>
+            <input class="form-control input-file" type="file" id="image-flag" name="image-flag" accept="image/*" required autofocus>
+            <br>
+            <label for="name" class="sr-only">Name of flag</label>
+            <input type="text" th:field="*{name}" class="form-control" id="name" name="name" placeholder="Name of flag" required autofocus>
+            <br>
+            <label for="region" class="sr-only">Region</label>
+            <select th:field="*{region}" class="form-control" id="region" name="region" required autofocus>
+            	<option value="Africa">Africa</option>
+            	<option value="Asia">Asia</option>
+            	<option value="Central America">Central America</option>
+            	<option value="Europe">Europe</option>
+            	<option value="North America">North America</option>
+            	<option value="Oceania">Oceania</option>
+            	<option value="South America">South America</option>
+            	<option value="Other">Other</option>
+            </select>
+            <br>
+            <label for="information" class="sr-only">Information</label>
+            <textarea th:field="*{information}" class="form-control" id="information" name="information" placeholder="Information of the flag" required autofocus></textarea>
+            <br> 
+            <input type="submit" class="btn btn-lg btn-success btn-block" value="Save flag">
+		</form>
+		<br>
+ 	</main>
+	<footer th:replace="layouts/footer_user.html :: footer-user"></footer>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
+	<script th:src="@{/js/preview-image.js}"></script>
+	<script th:src="@{/js/information-flag-textarea.js}"></script>
+</body>
+</html>
