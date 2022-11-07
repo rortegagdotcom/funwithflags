@@ -68,11 +68,6 @@
 		</dependency>
 		<dependency>
     		<groupId>org.webjars.npm</groupId>
-    		<artifactId>popper.js</artifactId>
-    		<version>1.16.1</version>
-		</dependency>
-		<dependency>
-    		<groupId>org.webjars.npm</groupId>
     		<artifactId>summernote</artifactId>
     		<version>0.8.20</version>
 		</dependency>
