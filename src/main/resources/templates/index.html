@@ -57,22 +57,19 @@
 				<p class="h2 text-center">There are two types of mini-games, 4-answer test and true/false.</p>
 			</div>
 		</div>
-		<div class="row bg-light" style="padding:5%;">
+		<div class="row bg-light p-5">
 			<div class="col-md-8">
-				<p class="h2 text-center">Join a game by entering the game code to access. You do not need registration.</p>
-				<br>
-				<button type="button" th:onclick="window.location.href='/join/quizgame'" value="Join a Quiz Game" class="btn btn-primary mx-auto d-block" style="padding:2%;"><span class="h4">Join a Quiz Game</span></button>
-				<br>
+				<p class="h2 text-center">Join a game by entering the game code to access.<br> You do not need registration.</p>
+				<button type="button" th:onclick="window.location.href='/join/quizgame'" value="Join a Quiz Game" class="btn btn-primary mx-auto d-block p" style="padding:2%;"><span class="h4">Join a Quiz Game</span></button>
 				<button type="button" th:onclick="window.location.href='/join/tfgame'" value="Join a T/F Game" class="btn btn-primary mx-auto d-block" style="padding:2%;"><span class="h4">Join a T/F Game</span></button>
-				<br>
 			</div>
 			<div class="col-md-4">
-				<img class="img-responsive mx-auto d-block" th:src="@{/img/background-join-game.png}" alt="Join game" width="100%" height="100%">
+				<img class="img-fluid mx-auto d-block" alt="Join game" th:src="@{/img/background-join-game.png}">
 			</div>
 		</div>
-		<div style="padding:5%;">
-			<p class="h2 text-center" style="padding:2%;">What are you waiting for to find out who is the smartest about flags? Sign up for free here.</p>
-			<button type="button" th:onclick="window.location.href='/signup'" value="Sign Up" class="btn btn-primary btn-block" style="padding:2%;"><span class="h4">Sign Up</span></button>
+		<div class="d-grid col-6 mx-auto py-5">
+			<p class="h2 text-center pb-5">What are you waiting for to find out who is the smartest about flags? Sign up for free here.</p>
+			<button class="btn btn-primary btn-block py-3" type="button" value="Sign Up" th:onclick="window.location.href='/signup'"><span class="h4">Sign Up</span></button>
 		</div>
 	</main>
 	<footer th:replace="layouts/footer.html :: footer"></footer>
