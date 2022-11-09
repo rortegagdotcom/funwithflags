@@ -1,14 +1,19 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" th:href="@{/webjars/bootstrap/5.2.2/css/bootstrap.min.css}">
-</head>
-<body>
-	<!-- Footer Home's User -->
-	<footer th:fragment="footer-user" class="page-footer bg-dark mt-auto">
-  		<div class="footer-copyright text-center text-white py-3">© 2020 Copyright: Fun with Flags</div>
-	</footer>
-</body>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      th:href="@{/webjars/bootstrap/5.2.2/css/bootstrap.min.css}"
+    />
+  </head>
+  <body>
+    <!-- Footer Home's User -->
+    <footer class="page-footer bg-dark mt-auto" th:fragment="footer-user">
+      <div class="footer-copyright text-center text-white py-3">
+        © 2020 Copyright: Fun with Flags
+      </div>
+    </footer>
+  </body>
 </html>

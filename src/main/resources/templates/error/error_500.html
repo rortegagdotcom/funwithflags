@@ -1,23 +1,28 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" th:href="@{/webjars/bootstrap/5.2.2/css/bootstrap.min.css}">
-	<title>Internal Server Error (500) - Fun with Flags</title>
-</head>
-<body>
-	<header th:replace="layouts/header.html :: header"></header>
-	<main class="container" style="padding:10%;">
-		<h1 class="text-center">Internal Server Error - 500</h1>
-		<p class="text-center">
-		The server had an error when displaying the content. 
-		Try again later or else contact the administrator or developer.
-		</p>
-		<p class="text-center">Sorry for the inconvenience.</p>
-	</main>
-	<footer th:replace="layouts/footer.html :: footer"></footer>
-	<script th:src="@{/webjars/jquery/3.6.1/jquery.min.js}"></script>
-  	<script th:src="@{/webjars/bootstrap/5.2.2/js/bootstrap.bundle.min.js}"></script>
-</body>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      th:href="@{/webjars/bootstrap/5.2.2/css/bootstrap.min.css}"
+    />
+    <title>Internal Server Error (500) - Fun with Flags</title>
+  </head>
+  <body>
+    <header th:replace="layouts/header.html :: header"></header>
+    <main class="container-fluid">
+      <h1 class="text-center p-5">Internal Server Error - 500</h1>
+      <p class="text-center">
+        The server had an error when displaying the content. Try again later or
+        else contact the administrator or developer.
+      </p>
+      <p class="text-center">Sorry for the inconvenience.</p>
+    </main>
+    <footer th:replace="layouts/footer.html :: footer"></footer>
+    <script th:src="@{/webjars/jquery/3.6.1/jquery.min.js}"></script>
+    <script
+      th:src="@{/webjars/bootstrap/5.2.2/js/bootstrap.bundle.min.js}"
+    ></script>
+  </body>
 </html>

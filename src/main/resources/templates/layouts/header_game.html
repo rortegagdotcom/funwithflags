@@ -1,14 +1,21 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" th:href="@{/webjars/bootstrap/5.2.2/css/bootstrap.min.css}">
-</head>
-<body>
-	<!-- Header Game -->
- 	<header th:fragment="header-game" class="container-fluid">
- 		<img class="img-responsive mx-auto d-block" th:src="@{/img/funwithflags-logo-game.png}" alt="Fun with flags" width="50%">
- 	</header>
-</body>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      th:href="@{/webjars/bootstrap/5.2.2/css/bootstrap.min.css}"
+    />
+  </head>
+  <body>
+    <!-- Header Game -->
+    <header class="container-fluid" th:fragment="header-game">
+      <img
+        class="img-fluid mx-auto d-block"
+        alt="Fun with flags"
+        th:src="@{/img/funwithflags-logo-game.png}"
+      />
+    </header>
+  </body>
 </html>
