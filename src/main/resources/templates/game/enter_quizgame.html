@@ -10,14 +10,12 @@
 <body class="d-flex flex-column min-vh-100">
  	<header th:replace="layouts/header_game.html :: header-game"></header>
 	<main class="container-fluid">
-		<form th:action="@{/quizgame/}" method="post">
-			<h1 class="text-center text-white" style="padding:5%;">Enter the Quiz Code</h1>
+		<form method="post" th:action="@{/quizgame/}">
+			<h1 class="text-center text-white p-5">Enter the Quiz Code</h1>
 			<label class="sr-only" for="player">Enter name player</label>
-			<input class="form-control" type="text" id="player" th:name="player" placeholder="Enter name player" required autofocus>
-			<br>
+			<input class="form-control" type="text" id="player" placeholder="Enter name player" required autofocus th:name="player">
 			<label class="sr-only" for="codegame">Code Game</label>
-			<input class="form-control" type="text" id="codegame" th:name="codegame" maxlength="5" placeholder="Enter game code" onkeypress="return isNumber(event)" required autofocus>
-			<br>
+			<input class="form-control" type="text" id="codegame" maxlength="5" placeholder="Enter game code" onkeypress="return isNumber(event)" required autofocus th:name="codegame">
 			<input class="form-control btn btn-light" type="submit" value="Enter game">
 		</form>
 	</main>

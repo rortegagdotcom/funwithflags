@@ -9,33 +9,29 @@
 <body>
 	<header th:replace="layouts/header.html :: header"></header>
 	<main class="container-fluid">
-		<h3 class="text-center" th:text="${player}" style="padding:2%;"></h3>
-		<h1 class="text-center" style="padding:2%;">T/F game - <span th:text="${truefalsegame.name}"></span></h1>
-		<img class="img-responsive mx-auto d-block" th:src="@{${truefalsegame.flag.image}}" th:alt="@{${truefalsegame.flag.name}}" width="50%" height="50%">
-		<br>
+		<h3 class="text-center p-5" th:text="${player}"></h3>
+		<h1 class="text-center p-3">T/F game - <span th:text="${truefalsegame.name}"></span></h1>
+		<img class="img-fluid mx-auto d-block" width="50%" th:src="@{${truefalsegame.flag.image}}" th:alt="@{${truefalsegame.flag.name}}">
 		<form th:action="@{/results_tf_game}" method="post">
 				<ul class="nav nav-tabs justify-content-center" role="tablist">
     				<li class="nav-item" th:each="truefalsequestion, iStat : ${truefalsequestions}">
       					<a class="nav-link" data-toggle="tab" th:classappend="${iStat.first} ? 'active'" th:href="@{|#q${iStat.index+1}|}">Question #<span th:text="${iStat.index+1}"></span></a>
     				</li>
   				</ul>
-  				<br>
   				<div class="tab-content">
-    				<div th:id="q + ${iStat.index+1}" class="container tab-pane" th:classappend="${iStat.first} ? 'show active'" th:each="truefalsequestion, iStat : ${truefalsequestions}">
-    					<br>
-      					<h3 class="text-center" style="padding:2%;" th:text="${truefalsequestion.question}"></h3>
+    				<div class="container tab-pane" th:id="q + ${iStat.index+1}" th:classappend="${iStat.first} ? 'show active'" th:each="truefalsequestion, iStat : ${truefalsequestions}">
+      					<h3 class="text-center p-3" th:text="${truefalsequestion.question}"></h3>
       					<div class="btn btn-primary btn-block">
-      						<input type="radio" style="padding:2%;" th:id="answerTrue + ${iStat.index+1}" th:name="answer + ${iStat.index+1}" value="True" required><label th:for="answerTrue + ${iStat.index+1}">True</label>
+      						<input type="radio p-3" value="True" required th:id="answerTrue + ${iStat.index+1}" th:name="answer + ${iStat.index+1}"><label th:for="answerTrue + ${iStat.index+1}">True</label>
       					</div>
       					<div class="btn btn-primary btn-block">
-      						<input type="radio" style="padding:2%;" th:id="answerFalse + ${iStat.index+1}" th:name="answer + ${iStat.index+1}" value="False" required><label th:for="answerFalse + ${iStat.index+1}">False</label>
+      						<input type="radio p-3" value="False" required th:id="answerFalse + ${iStat.index+1}" th:name="answer + ${iStat.index+1}"><label th:for="answerFalse + ${iStat.index+1}">False</label>
       					</div>
     				</div>
-    				<br>
     				<input type="hidden" id="player" name="player" th:value="${player}">
     				<input type="hidden" id="truefalsegame" name="truefalsegame" th:value="${truefalsegame.id}">
   				</div>
-  			<input class="btn btn-primary btn-block" style="padding:2%;" type="submit" value="Submit my answers">
+  			<input class="btn btn-primary btn-block p-3" type="submit" value="Submit my answers">
   		</form>
   		<br>
 	</main>

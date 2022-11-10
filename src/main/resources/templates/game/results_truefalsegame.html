@@ -9,59 +9,45 @@
 <body>
 	<header th:replace="layouts/header.html :: header"></header>
 	<main class="container-fluid">
-		<h1 class="text-center" style="padding:2%;">Results of the game</h1>
-		<br>
-		<h3 class="text-center" style="padding:2%;" th:text="${player}"></h3>
+		<h1 class="text-center p-3">Results of the game</h1>
+		<h3 class="text-center p-3" th:text="${player}"></h3>
 		<h3 class="text-center">
 			Your score
-			<br>
 			<span th:text="${score}"></span>
 		</h3>
-		<br>
 		<h3 class="text-center">Questions of the game</h3>
-		<br>
-		<div class="container bg-light" style="padding-top:2%;" th:each="truefalsequestion, iStat : ${truefalsequestions}">
-			<h4 class="text-center" style="padding:1.5%;">Question <span th:text="${iStat.index+1}"></span></h4>
+		<div class="container bg-light pt-3" th:each="truefalsequestion, iStat : ${truefalsequestions}">
+			<h4 class="text-center p-2">Question <span th:text="${iStat.index+1}"></span></h4>
 			<p class="text-center font-weight-bold" th:text="${truefalsequestion.question}"></p>
-			<br>
-			<br>
-			<p class="text-center font-weight-bold btn-success" style="padding-top:1%;padding-bottom:1%;">
+			<p class="text-center font-weight-bold btn-success py-2">
 				Correct answer
-				<br>
 				<span th:text="${truefalsequestion.answerCorrect}"></span>
 			</p>
-			<br>
 		</div>
-		<div class="container bg-dark" style="padding-top:2%;">
-			<h4 class="text-center text-white" style="padding:1.5%;">Your answers</h4>
+		<div class="container bg-dark pt-3">
+			<h4 class="text-center text-white p-2">Your answers</h4>
 			<p class="text-center font-weight-bold text-white">
 				Question 1
-				<br>
 				<span th:text="${answer1}"></span>
 			</p>
 			<p class="text-center font-weight-bold text-white">
 				Question 2
-				<br>
 				<span th:text="${answer2}"></span>
 			</p>
 			<p class="text-center font-weight-bold text-white">
 				Question 3
-				<br>
 				<span th:text="${answer3}"></span>
 			</p>
 			<p class="text-center font-weight-bold text-white">
 				Question 4
-				<br>
 				<span th:text="${answer4}"></span>
 			</p>
-			<p class="text-center font-weight-bold text-white" style="padding-bottom:2%;">
+			<p class="text-center font-weight-bold text-white pb-3">
 				Question 5
-				<br>
 				<span th:text="${answer5}"></span>
 			</p>
 		</div>
-		<button type="button" th:onclick="window.location.href='/'" value="Go Home" class="btn btn-primary btn-block" style="padding:2%;"><span class="h4">Go Home</span></button>
-		<br>
+		<button class="btn btn-primary btn-block p-3" type="button" value="Go Home" th:onclick="window.location.href='/'"><span class="h4">Go Home</span></button>
 	</main>
 	<footer th:replace="layouts/footer.html :: footer"></footer>
 	<script th:src="@{/webjars/jquery/3.6.1/jquery.min.js}"></script>

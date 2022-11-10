@@ -11,22 +11,18 @@
  	<header th:replace="layouts/header_user.html :: header-user"></header>
  	<nav th:replace="layouts/menu_user.html :: menu-user"></nav>
 	<main class="container">
-		<br>
-		<h1 class="text-center" style="padding:5%;">Edit flag - [[${flag.name}]]</h1>
-		<form th:action="@{/save_flag}" th:object="${flag}" id="flag" name="flag" method="post" enctype="multipart/form-data">
-			<input type="hidden" th:field="*{id}" class="form-control" id="id" name="id" readonly="readonly" required autofocus>
-			<div class="bg-dark" style="padding:2%;">
+		<h1 class="text-center p-5">Edit flag - [[${flag.name}]]</h1>
+		<form id="flag" name="flag" method="post" enctype="multipart/form-data" th:action="@{/save_flag}" th:object="${flag}">
+			<input class="form-control" type="hidden" id="id" name="id" readonly="readonly" required autofocus th:field="*{id}">
+			<div class="bg-dark p-3">
 				<img class="d-block mx-auto" src="" id="preview" width="75%">
 			</div>
-			<br>
-            <label for="image" class="sr-only">Image</label>
+            <label class="sr-only" for="image">Image</label>
             <input class="btn btn-primary" type="file" id="image-flag" name="image-flag" accept="image/*" required autofocus>
-            <br>
-            <label for="name" class="sr-only">Name of flag</label>
-            <input type="text" th:field="*{name}" class="form-control" id="name" name="name" placeholder="Name of flag" required autofocus>
-            <br>
-            <label for="region" class="sr-only">Region</label>
-            <select th:field="*{region}" class="form-control" id="region" name="region" required autofocus>
+            <label class="sr-only" for="name">Name of flag</label>
+            <input class="form-control" type="text" id="name" name="name" placeholder="Name of flag" required autofocus th:field="*{name}">
+            <label class="sr-only" for="region">Region</label>
+            <select class="form-control" id="region" name="region" required autofocus th:field="*{region}">
             	<option value="Africa">Africa</option>
             	<option value="Asia">Asia</option>
             	<option value="Central America">Central America</option>
@@ -35,13 +31,10 @@
             	<option value="Oceania">Oceania</option>
             	<option value="South America">South America</option>
             </select>
-            <br>
-            <label for="information" class="sr-only">Information</label>
-            <textarea th:field="*{information}" class="form-control" id="information" name="information" placeholder="Information of the flag" required autofocus></textarea>
-            <br>
-            <button type="submit" class="btn btn-lg btn-success btn-block">Edit Flag</button>
+            <label class="sr-only" for="information">Information</label>
+            <textarea class="form-control" id="information" name="information" placeholder="Information of the flag" required autofocus th:field="*{information}"></textarea>
+            <button class="btn btn-lg btn-success btn-block" type="submit">Edit Flag</button>
 		</form>
-		<br>
  	</main>
 	<footer th:replace="layouts/footer_user.html :: footer-user"></footer>
 	<script th:src="@{/webjars/jquery/3.6.1/jquery.min.js}"></script>
