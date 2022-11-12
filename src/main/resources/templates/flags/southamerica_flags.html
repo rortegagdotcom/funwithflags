@@ -1,31 +1,44 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" th:href="@{/webjars/bootstrap/5.2.2/css/bootstrap.min.css}">
-	<title>South America Flags - Fun with Flags</title>
-</head>
-<body class="d-flex flex-column min-vh-100">
- 	<header th:replace="layouts/header.html :: header"></header>
- 	<nav th:replace="layouts/menu.html :: menu"></nav>
-	<main class="container-fluid">
-		<h1 class="text-center p-5">South America Flags</h1>
-		<div class="container" th:if="${listFlags.empty}">
-			<h3 class="text-center text-danger p-3">No flags found</h3>
-		</div>
-		<div class="card-columns">
-			<div class="card bg-light" th:each="flag : ${listFlags}">
-				<img class="card-img-top" th:src="${flag.image}" th:alt="${flag.name}">
-				<div class="card-body">
-					<h4 class="card-title text-center" th:text="${flag.name}"></h4>
-					<a class="btn btn-primary d-block" th:href="@{/view/flag/}+${flag.id}">See flag</a>
-				</div>
-			</div>
-		</div>
-	</main>
-	<footer th:replace="layouts/footer.html :: footer"></footer>
-	<script th:src="@{/webjars/jquery/3.6.1/jquery.min.js}"></script>
-  	<script th:src="@{/webjars/bootstrap/5.2.2/js/bootstrap.bundle.min.js}"></script>
-</body>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      th:href="@{/webjars/bootstrap/5.2.2/css/bootstrap.min.css}"
+    />
+    <title>South America Flags - Fun with Flags</title>
+  </head>
+  <body class="d-flex flex-column min-vh-100">
+    <header th:replace="layouts/header.html :: header"></header>
+    <nav th:replace="layouts/menu.html :: menu"></nav>
+    <main class="container-fluid">
+      <h1 class="text-center p-5">South America Flags</h1>
+      <div class="container" th:if="${listFlags.empty}">
+        <h3 class="text-center text-danger p-3">No flags found</h3>
+      </div>
+      <div class="card-columns">
+        <div class="card bg-light" th:each="flag : ${listFlags}">
+          <img
+            class="card-img-top"
+            th:src="${flag.image}"
+            th:alt="${flag.name}"
+          />
+          <div class="card-body">
+            <h4 class="card-title text-center" th:text="${flag.name}"></h4>
+            <a
+              class="btn btn-primary d-block"
+              th:href="@{/view/flag/}+${flag.id}"
+              >See flag</a
+            >
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer th:replace="layouts/footer.html :: footer"></footer>
+    <script th:src="@{/webjars/jquery/3.6.1/jquery.min.js}"></script>
+    <script
+      th:src="@{/webjars/bootstrap/5.2.2/js/bootstrap.bundle.min.js}"
+    ></script>
+  </body>
 </html>

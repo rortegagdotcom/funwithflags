@@ -1,14 +1,14 @@
 function readURL(input) {
-	if (input.files && input.files[0]) {
-		var reader = new FileReader();
-		reader.onload = function(e) {
-			$('#preview').attr('src', e.target.result);
-		}
-		
-		reader.readAsDataURL(input.files[0]);
-	}
+  if (input.files && input.files[0]) {
+    var reader = new FileReader();
+    reader.onload = function (e) {
+      $("#preview").attr("src", e.target.result);
+    };
+
+    reader.readAsDataURL(input.files[0]);
+  }
 }
 
-$("#image-flag").change(function() {
-	readURL(this);
+$("#image-flag").change(function () {
+  readURL(this);
 });

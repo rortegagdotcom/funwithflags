@@ -1,36 +1,54 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" th:href="@{/webjars/bootstrap/5.2.2/css/bootstrap.min.css}">
-	<title>Delete flags - Fun with Flags</title>
-</head>
-<body class="d-flex flex-column min-vh-100">
-	<header th:replace="layouts/header_user.html :: header-user"></header>
- 	<nav th:replace="layouts/menu_user.html :: menu-user"></nav>
-	<main class="container">
-		<h1 class="text-center p-5">Delete my flags</h1>
-		<div class="container" th:if="${listFlagsUser.empty}">
-			<h3 class="text-center text-danger p-3">
-				It looks like you don't have any flag, create one!
-			</h3>
-			<button class="btn btn-primary mx-auto d-block p-3" type="button" value="Create flag" th:onclick="window.location.href='/home/add_flag'">Create flag</button>
-		</div>
-		<div class="card-columns">
-			<div class="card bg-light" th:each="flag : ${listFlagsUser}">
-				<img class="card-img-top" th:src="${flag.image}">
-				<div class="card-body">
-					<h4 class="card-title text-center" th:text="${flag.name}"></h4>
-					<a class="btn btn-danger d-block" th:onclick="deleteFlag([[${flag.id}]])">Delete flag</a>
-				</div>
-			</div>
-		</div>
- 	</main>
-	<footer th:replace="layouts/footer_user.html :: footer-user"></footer>
-	<script th:src="@{/webjars/jquery/3.6.1/jquery.min.js}"></script>
-  	<script th:src="@{/webjars/bootstrap/5.2.2/js/bootstrap.bundle.min.js}"></script>
-  	<script th:src="@{/webjars/sweetalert/2.1.2/dist/sweetalert.min.js}"></script>
-  	<script th:src="@{/js/confirm-delete-flag.js}"></script>
-</body>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      th:href="@{/webjars/bootstrap/5.2.2/css/bootstrap.min.css}"
+    />
+    <title>Delete flags - Fun with Flags</title>
+  </head>
+  <body class="d-flex flex-column min-vh-100">
+    <header th:replace="layouts/header_user.html :: header-user"></header>
+    <nav th:replace="layouts/menu_user.html :: menu-user"></nav>
+    <main class="container">
+      <h1 class="text-center p-5">Delete my flags</h1>
+      <div class="container" th:if="${listFlagsUser.empty}">
+        <h3 class="text-center text-danger p-3">
+          It looks like you don't have any flag, create one!
+        </h3>
+        <button
+          class="btn btn-primary mx-auto d-block p-3"
+          type="button"
+          value="Create flag"
+          th:onclick="window.location.href='/home/add_flag'"
+        >
+          Create flag
+        </button>
+      </div>
+      <div class="card-columns">
+        <div class="card bg-light" th:each="flag : ${listFlagsUser}">
+          <img class="card-img-top" th:src="${flag.image}" />
+          <div class="card-body">
+            <h4 class="card-title text-center" th:text="${flag.name}"></h4>
+            <a
+              class="btn btn-danger d-block"
+              th:onclick="deleteFlag([[${flag.id}]])"
+              >Delete flag</a
+            >
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer th:replace="layouts/footer_user.html :: footer-user"></footer>
+    <script th:src="@{/webjars/jquery/3.6.1/jquery.min.js}"></script>
+    <script
+      th:src="@{/webjars/bootstrap/5.2.2/js/bootstrap.bundle.min.js}"
+    ></script>
+    <script
+      th:src="@{/webjars/sweetalert/2.1.2/dist/sweetalert.min.js}"
+    ></script>
+    <script th:src="@{/js/confirm-delete-flag.js}"></script>
+  </body>
 </html>

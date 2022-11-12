@@ -1,42 +1,92 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" th:href="@{/webjars/bootstrap/5.2.2/css/bootstrap.min.css}">
-	<title>T/F Game - [[${truefalsegame.name}]] - Fun with Flags</title>
-</head>
-<body>
-	<header th:replace="layouts/header.html :: header"></header>
-	<main class="container-fluid">
-		<h3 class="text-center p-5" th:text="${player}"></h3>
-		<h1 class="text-center p-3">T/F game - <span th:text="${truefalsegame.name}"></span></h1>
-		<img class="img-fluid mx-auto d-block" width="50%" th:src="@{${truefalsegame.flag.image}}" th:alt="@{${truefalsegame.flag.name}}">
-		<form th:action="@{/results_tf_game}" method="post">
-				<ul class="nav nav-tabs justify-content-center" role="tablist">
-    				<li class="nav-item" th:each="truefalsequestion, iStat : ${truefalsequestions}">
-      					<a class="nav-link" data-toggle="tab" th:classappend="${iStat.first} ? 'active'" th:href="@{|#q${iStat.index+1}|}">Question #<span th:text="${iStat.index+1}"></span></a>
-    				</li>
-  				</ul>
-  				<div class="tab-content">
-    				<div class="container tab-pane" th:id="q + ${iStat.index+1}" th:classappend="${iStat.first} ? 'show active'" th:each="truefalsequestion, iStat : ${truefalsequestions}">
-      					<h3 class="text-center p-3" th:text="${truefalsequestion.question}"></h3>
-      					<div class="btn btn-primary btn-block">
-      						<input type="radio p-3" value="True" required th:id="answerTrue + ${iStat.index+1}" th:name="answer + ${iStat.index+1}"><label th:for="answerTrue + ${iStat.index+1}">True</label>
-      					</div>
-      					<div class="btn btn-primary btn-block">
-      						<input type="radio p-3" value="False" required th:id="answerFalse + ${iStat.index+1}" th:name="answer + ${iStat.index+1}"><label th:for="answerFalse + ${iStat.index+1}">False</label>
-      					</div>
-    				</div>
-    				<input type="hidden" id="player" name="player" th:value="${player}">
-    				<input type="hidden" id="truefalsegame" name="truefalsegame" th:value="${truefalsegame.id}">
-  				</div>
-  			<input class="btn btn-primary btn-block p-3" type="submit" value="Submit my answers">
-  		</form>
-  		<br>
-	</main>
-	<footer th:replace="layouts/footer.html :: footer"></footer>
-	<script th:src="@{/webjars/jquery/3.6.1/jquery.min.js}"></script>
-  	<script th:src="@{/webjars/bootstrap/5.2.2/js/bootstrap.bundle.min.js}"></script>
-</body>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      th:href="@{/webjars/bootstrap/5.2.2/css/bootstrap.min.css}"
+    />
+    <title>T/F Game - [[${truefalsegame.name}]] - Fun with Flags</title>
+  </head>
+  <body>
+    <header th:replace="layouts/header.html :: header"></header>
+    <main class="container-fluid">
+      <h3 class="text-center p-5" th:text="${player}"></h3>
+      <h1 class="text-center p-3">
+        T/F game - <span th:text="${truefalsegame.name}"></span>
+      </h1>
+      <img
+        class="img-fluid mx-auto d-block"
+        width="50%"
+        th:src="@{${truefalsegame.flag.image}}"
+        th:alt="@{${truefalsegame.flag.name}}"
+      />
+      <form th:action="@{/results_tf_game}" method="post">
+        <ul class="nav nav-tabs justify-content-center" role="tablist">
+          <li
+            class="nav-item"
+            th:each="truefalsequestion, iStat : ${truefalsequestions}"
+          >
+            <a
+              class="nav-link"
+              data-toggle="tab"
+              th:classappend="${iStat.first} ? 'active'"
+              th:href="@{|#q${iStat.index+1}|}"
+              >Question #<span th:text="${iStat.index+1}"></span
+            ></a>
+          </li>
+        </ul>
+        <div class="tab-content">
+          <div
+            class="container tab-pane"
+            th:id="q + ${iStat.index+1}"
+            th:classappend="${iStat.first} ? 'show active'"
+            th:each="truefalsequestion, iStat : ${truefalsequestions}"
+          >
+            <h3
+              class="text-center p-3"
+              th:text="${truefalsequestion.question}"
+            ></h3>
+            <div class="btn btn-primary btn-block">
+              <input
+                type="radio p-3"
+                value="True"
+                required
+                th:id="answerTrue + ${iStat.index+1}"
+                th:name="answer + ${iStat.index+1}"
+              /><label th:for="answerTrue + ${iStat.index+1}">True</label>
+            </div>
+            <div class="btn btn-primary btn-block">
+              <input
+                type="radio p-3"
+                value="False"
+                required
+                th:id="answerFalse + ${iStat.index+1}"
+                th:name="answer + ${iStat.index+1}"
+              /><label th:for="answerFalse + ${iStat.index+1}">False</label>
+            </div>
+          </div>
+          <input type="hidden" id="player" name="player" th:value="${player}" />
+          <input
+            type="hidden"
+            id="truefalsegame"
+            name="truefalsegame"
+            th:value="${truefalsegame.id}"
+          />
+        </div>
+        <input
+          class="btn btn-primary btn-block p-3"
+          type="submit"
+          value="Submit my answers"
+        />
+      </form>
+      <br />
+    </main>
+    <footer th:replace="layouts/footer.html :: footer"></footer>
+    <script th:src="@{/webjars/jquery/3.6.1/jquery.min.js}"></script>
+    <script
+      th:src="@{/webjars/bootstrap/5.2.2/js/bootstrap.bundle.min.js}"
+    ></script>
+  </body>
 </html>

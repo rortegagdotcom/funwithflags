@@ -1,124 +1,246 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" th:href="@{/webjars/bootstrap/5.2.2/css/bootstrap.min.css}">
-	<title>Add T/F game - Fun with Flags</title>
-</head>
-<body class="d-flex flex-column min-vh-100">
-	<header th:replace="layouts/header_user.html :: header-user"></header>
- 	<nav th:replace="layouts/menu_user.html :: menu-user"></nav>
-	<main class="container">
-		<br>
-		<h1 class="text-center" style="padding:5%;">Add new T/F game</h1>
-		<form th:action="@{/save_tfgame}" th:object="${truefalsegame}" id="truefalsegame" name="truefalsegame" method="post" enctype="multipart/form-data">
-            <label for="name" class="sr-only">Name of T/F game</label>
-            <input type="text" th:field="*{name}" class="form-control" id="name" name="name" placeholder="Name of T/F game" required autofocus>
-            <br>
-            <label for="flag">Select flag</label>
-            <select class="form-control" th:field="*{flag}" id="flag" name="flag" required autofocus>
-      			<option th:each="flag : ${listFlags}" th:value="${flag.id}" th:text="${flag.name}"></option>
-      		</select>
-      		<br>
-            <div id="accordion">
-            	<div class="card">
-    				<div class="card-header">
-      					<a class="card-link" data-toggle="collapse" href="#q1">Question #1</a>
-    				</div>
-    				<div id="q1" class="collapse show" data-parent="#accordion">
-      					<div class="card-body">
-      						<label for="question1" class="sr-only">What is the question?</label>
-        					<input type="text" class="form-control" th:field="${question.question}" id="question1" name="question" placeholder="What is the question?" required autofocus>
-        					<br>
-        					<label for="answercorrect1">Select True or False</label>
-        					<select class="form-control" th:field="${question.answerCorrect}" id="answercorrect1" name="answercorrect" required autofocus>
-        						<option value="True">True</option>
-        						<option value="False">False</option>
-        					</select>
-      					</div>
-    				</div>
-  				</div>
-  				<br>
-  				<div class="card">
-    				<div class="card-header">
-      					<a class="card-link" data-toggle="collapse" href="#q2">Question #2</a>
-    				</div>
-    				<div id="q2" class="collapse show" data-parent="#accordion">
-      					<div class="card-body">
-      						<label for="question2" class="sr-only">What is the question?</label>
-        					<input type="text" class="form-control" th:field="${question.question}" id="question2" name="question" placeholder="What is the question?" required autofocus>
-        					<br>
-        					<label for="answercorrect2">Select True or False</label>
-        					<select class="form-control" th:field="${question.answerCorrect}" id="answercorrect2" name="answercorrect" required autofocus>
-        						<option value="True">True</option>
-        						<option value="False">False</option>
-        					</select>
-      					</div>
-    				</div>
-  				</div>
-  				<br>
-  				<div class="card">
-    				<div class="card-header">
-      					<a class="card-link" data-toggle="collapse" href="#q3">Question #3</a>
-    				</div>
-    				<div id="q3" class="collapse show" data-parent="#accordion">
-      					<div class="card-body">
-      						<label for="question3" class="sr-only">What is the question?</label>
-        					<input type="text" class="form-control" th:field="${question.question}" id="question3" name="question" placeholder="What is the question?" required autofocus>
-        					<br>
-        					<label for="answercorrect3">Select True or False</label>
-        					<select class="form-control" th:field="${question.answerCorrect}" id="answercorrect3" name="answercorrect" required autofocus>
-        						<option value="True">True</option>
-        						<option value="False">False</option>
-        					</select>
-      					</div>
-    				</div>
-  				</div>
-  				<br>
-  				<div class="card">
-    				<div class="card-header">
-      					<a class="card-link" data-toggle="collapse" href="#q4">Question #4</a>
-    				</div>
-    				<div id="q4" class="collapse show" data-parent="#accordion">
-      					<div class="card-body">
-      						<label for="question4" class="sr-only">What is the question?</label>
-        					<input type="text" class="form-control" th:field="${question.question}" id="question4" name="question" placeholder="What is the question?" required autofocus>
-        					<br>
-        					<label for="answercorrect4">Select True or False</label>
-        					<select class="form-control" th:field="${question.answerCorrect}" id="answercorrect4" name="answercorrect" required autofocus>
-        						<option value="True">True</option>
-        						<option value="False">False</option>
-        					</select>
-      					</div>
-    				</div>
-  				</div>
-  				<br>
-  				<div class="card">
-    				<div class="card-header">
-      					<a class="card-link" data-toggle="collapse" href="#q5">Question #5</a>
-    				</div>
-    				<div id="q5" class="collapse show" data-parent="#accordion">
-      					<div class="card-body">
-      						<label for="question5" class="sr-only">What is the question?</label>
-        					<input type="text" class="form-control" th:field="${question.question}" id="question5" name="question" placeholder="What is the question?" required autofocus>
-        					<br>
-        					<label for="answercorrect5">Select True or False</label>
-        					<select class="form-control" th:field="${question.answerCorrect}" id="answercorrect5" name="answercorrect" required autofocus>
-        						<option value="True">True</option>
-        						<option value="False">False</option>
-        					</select>
-      					</div>
-    				</div>
-  				</div>
-  			</div>
-			<br>
-            <input type="submit" class="btn btn-lg btn-success btn-block" value="Save T/F game">
-		</form>
-		<br>
- 	</main>
-	<footer th:replace="layouts/footer_user.html :: footer-user"></footer>
-	<script th:src="@{/webjars/jquery/3.6.1/jquery.min.js}"></script>
-  	<script th:src="@{/webjars/bootstrap/5.2.2/js/bootstrap.bundle.min.js}"></script>
-</body>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      th:href="@{/webjars/bootstrap/5.2.2/css/bootstrap.min.css}"
+    />
+    <title>Add T/F game - Fun with Flags</title>
+  </head>
+  <body class="d-flex flex-column min-vh-100">
+    <header th:replace="layouts/header_user.html :: header-user"></header>
+    <nav th:replace="layouts/menu_user.html :: menu-user"></nav>
+    <main class="container">
+      <h1 class="text-center p-5">Add new T/F game</h1>
+      <form
+        id="truefalsegame"
+        name="truefalsegame"
+        method="post"
+        enctype="multipart/form-data"
+        th:action="@{/save_tfgame}"
+        th:object="${truefalsegame}"
+      >
+        <label class="sr-only" for="name">Name of T/F game</label>
+        <input
+          class="form-control"
+          type="text"
+          id="name"
+          name="name"
+          placeholder="Name of T/F game"
+          required
+          autofocus
+          th:field="*{name}"
+        />
+        <label for="flag">Select flag</label>
+        <select
+          class="form-control"
+          id="flag"
+          name="flag"
+          required
+          autofocus
+          th:field="*{flag}"
+        >
+          <option
+            th:each="flag : ${listFlags}"
+            th:value="${flag.id}"
+            th:text="${flag.name}"
+          ></option>
+        </select>
+        <div id="accordion">
+          <div class="card">
+            <div class="card-header">
+              <a class="card-link" data-toggle="collapse" href="#q1"
+                >Question #1</a
+              >
+            </div>
+            <div class="collapse show" id="q1" data-parent="#accordion">
+              <div class="card-body">
+                <label class="sr-only" for="question1"
+                  >What is the question?</label
+                >
+                <input
+                  class="form-control"
+                  type="text"
+                  id="question1"
+                  name="question"
+                  placeholder="What is the question?"
+                  required
+                  autofocus
+                  th:field="${question.question}"
+                />
+                <label for="answercorrect1">Select True or False</label>
+                <select
+                  class="form-control"
+                  id="answercorrect1"
+                  name="answercorrect"
+                  required
+                  autofocus
+                  th:field="${question.answerCorrect}"
+                >
+                  <option value="True">True</option>
+                  <option value="False">False</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header">
+              <a class="card-link" data-toggle="collapse" href="#q2"
+                >Question #2</a
+              >
+            </div>
+            <div class="collapse show" id="q2" data-parent="#accordion">
+              <div class="card-body">
+                <label class="sr-only" for="question2"
+                  >What is the question?</label
+                >
+                <input
+                  class="form-control"
+                  type="text"
+                  id="question2"
+                  name="question"
+                  placeholder="What is the question?"
+                  required
+                  autofocus
+                  th:field="${question.question}"
+                />
+                <label for="answercorrect2">Select True or False</label>
+                <select
+                  class="form-control"
+                  id="answercorrect2"
+                  name="answercorrect"
+                  required
+                  autofocus
+                  th:field="${question.answerCorrect}"
+                >
+                  <option value="True">True</option>
+                  <option value="False">False</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header">
+              <a class="card-link" data-toggle="collapse" href="#q3"
+                >Question #3</a
+              >
+            </div>
+            <div class="collapse show" id="q3" data-parent="#accordion">
+              <div class="card-body">
+                <label class="sr-only" for="question3"
+                  >What is the question?</label
+                >
+                <input
+                  class="form-control"
+                  type="text"
+                  id="question3"
+                  name="question"
+                  placeholder="What is the question?"
+                  required
+                  autofocus
+                  th:field="${question.question}"
+                />
+                <label for="answercorrect3">Select True or False</label>
+                <select
+                  class="form-control"
+                  id="answercorrect3"
+                  name="answercorrect"
+                  required
+                  autofocus
+                  th:field="${question.answerCorrect}"
+                >
+                  <option value="True">True</option>
+                  <option value="False">False</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header">
+              <a class="card-link" data-toggle="collapse" href="#q4"
+                >Question #4</a
+              >
+            </div>
+            <div class="collapse show" id="q4" data-parent="#accordion">
+              <div class="card-body">
+                <label class="sr-only" for="question4"
+                  >What is the question?</label
+                >
+                <input
+                  class="form-control"
+                  type="text"
+                  id="question4"
+                  name="question"
+                  placeholder="What is the question?"
+                  required
+                  autofocus
+                  th:field="${question.question}"
+                />
+                <label for="answercorrect4">Select True or False</label>
+                <select
+                  class="form-control"
+                  id="answercorrect4"
+                  name="answercorrect"
+                  required
+                  autofocus
+                  th:field="${question.answerCorrect}"
+                >
+                  <option value="True">True</option>
+                  <option value="False">False</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header">
+              <a class="card-link" data-toggle="collapse" href="#q5"
+                >Question #5</a
+              >
+            </div>
+            <div class="collapse show" id="q5" data-parent="#accordion">
+              <div class="card-body">
+                <label class="sr-only" for="question5"
+                  >What is the question?</label
+                >
+                <input
+                  class="form-control"
+                  type="text"
+                  id="question5"
+                  name="question"
+                  placeholder="What is the question?"
+                  required
+                  autofocus
+                  th:field="${question.question}"
+                />
+                <label for="answercorrect5">Select True or False</label>
+                <select
+                  class="form-control"
+                  id="answercorrect5"
+                  name="answercorrect"
+                  required
+                  autofocus
+                  th:field="${question.answerCorrect}"
+                >
+                  <option value="True">True</option>
+                  <option value="False">False</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+        <input
+          class="btn btn-lg btn-success btn-block"
+          type="submit"
+          value="Save T/F game"
+        />
+      </form>
+    </main>
+    <footer th:replace="layouts/footer_user.html :: footer-user"></footer>
+    <script th:src="@{/webjars/jquery/3.6.1/jquery.min.js}"></script>
+    <script
+      th:src="@{/webjars/bootstrap/5.2.2/js/bootstrap.bundle.min.js}"
+    ></script>
+  </body>
 </html>
